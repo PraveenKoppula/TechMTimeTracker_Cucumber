@@ -7,7 +7,7 @@ import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-		features = "C:\\Users\\Praveen Koppula\\eclipse-workspace\\TimeTracker_Cucumber\\TimeTracker_Cucumber\\src\\main\\java\\com\\techm\\timetracker\\features\\login.feature"
+		features = "/usr/local/google/home/praveenkumark/My Projects DO NOT DELETE/TechMTimeTracker_Cucumber/TimeTracker_Cucumber/src/main/java/com/techm/timetracker/features"
 		,glue={"com.techm.timetracker.stepDefinitions"}
 		,format={"pretty","html:test-output"}
 		)

@@ -44,9 +44,21 @@ public class TimeSheetPage extends TestBase {
 	WebElement tsSubmittedForTuesday;
 	
 	@FindBy(id="lnkNextWeek")
-	WebElement nextWeekBtn;	
-	
+	WebElement nextWeekBtn;
+
+	@FindBy(id="lblClassification")
+	WebElement empClassification;
+
 	Select s;
+
+	public boolean empClassificationPresent()
+	{
+		if(driver.findElements(By.id("lblClassification")).size() > 0) {
+			return true;
+		}	else 		{
+			return false;
+		}
+	}
 
 	public List<WebElement> listOfWeeks()
 	{

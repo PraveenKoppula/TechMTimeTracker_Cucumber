@@ -41,6 +41,7 @@ public class LoginStepDefinition extends TestBase{
 	@Then("^user is on Home page$")
 	public void user_is_on_Home_page() {
 		assertEquals(true, homePage.checkIfFillTSImagePresent());
+		driver.quit();
 	}
 	
 }
