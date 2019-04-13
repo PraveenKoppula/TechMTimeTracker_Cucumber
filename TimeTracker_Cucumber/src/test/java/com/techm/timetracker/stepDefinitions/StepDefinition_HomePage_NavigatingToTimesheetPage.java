@@ -3,6 +3,7 @@ package com.techm.timetracker.stepDefinitions;
 import static com.techm.timetracker.base.TestBase.initialization;
 import static com.techm.timetracker.base.TestBase.prop;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import com.techm.timetracker.base.TestBase;
 import com.techm.timetracker.pages.HomePage;
@@ -12,11 +13,11 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class HomePageDefinition extends TestBase {
+public class StepDefinition_HomePage_NavigatingToTimesheetPage extends TestBase {
 
-  LoginPage loginPage;
-  HomePage homePage;
-  TimeSheetPage tsPage;
+  private LoginPage loginPage;
+  private HomePage homePage;
+  private TimeSheetPage tsPage;
 
   @Given("^user on home page$")
   public void user_on_home_page() {
@@ -28,7 +29,7 @@ public class HomePageDefinition extends TestBase {
 
   @When("^timesheet image is present$")
   public void timesheet_image_is_present() {
-    assertEquals (true,homePage.checkIfFillTSImagePresent());
+    assertTrue (homePage.checkIfFillTSImagePresent());
   }
 
   @Then("^user checks the acknowledge check box and clicks fill timesheet image$")
@@ -38,7 +39,7 @@ public class HomePageDefinition extends TestBase {
 
   @Then("^user taken to timesheet page$")
   public void user_taken_to_timesheet_page() {
-    assertEquals (true,tsPage.empClassificationPresent());
+    assertTrue (tsPage.empClassificationPresent());
     driver.quit();
   }
 

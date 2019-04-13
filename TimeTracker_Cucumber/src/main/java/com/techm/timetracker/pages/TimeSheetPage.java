@@ -23,33 +23,33 @@ public class TimeSheetPage extends TestBase {
 	}
 	
 	@FindBy(id="ddlWeek")
-	WebElement weekCombo;
+	private WebElement weekCombo;
 
 	@FindBy(id="lnkFind")
-	WebElement findBtn;
+	private WebElement findBtn;
 
 	@FindBy(id="lblCompHours")
-	WebElement compensationHours;
+	private WebElement compensationHours;
 	
 	@FindBy(id="gvTimesheetDay0")
-	WebElement timehsheet0;
+	private WebElement timehsheet0;
 	
 	@FindBy(id="lblName")
-	WebElement employeeName;
+	private WebElement employeeName;
 	
 	@FindBy(xpath="//*[@href='Logout.aspx']")
-	WebElement logOut;
+	private WebElement logOut;
 
 	@FindBy(id="lblMsgDay1")
-	WebElement tsSubmittedForTuesday;
+	private WebElement tsSubmittedForTuesday;
 	
 	@FindBy(id="lnkNextWeek")
-	WebElement nextWeekBtn;
+	private WebElement nextWeekBtn;
 
 	@FindBy(id="lblClassification")
 	WebElement empClassification;
 
-	Select s;
+	private Select s;
 
 	public boolean empClassificationPresent()
 	{
@@ -83,7 +83,7 @@ public class TimeSheetPage extends TestBase {
 		}
 	}
 	
-	public boolean bTimesheetsFilledSelectedForWeek()
+	public boolean bTimesheetsFilledForSelectedWeek()
 	{
 		if(compensationHours.getText().equals("40.00")){
 			return true;
@@ -147,7 +147,7 @@ public class TimeSheetPage extends TestBase {
 		System.out.println("DAY-"+dayNumber+" CLICKED ");
 	}
 	
-	public void fillTSForASession(int dayNumber, String session) throws InterruptedException
+	private void fillTSForASession(int dayNumber, String session) throws InterruptedException
 	{
 		String sessionCode = null;
 		String loginTime = null;
@@ -172,7 +172,7 @@ public class TimeSheetPage extends TestBase {
 		Thread.sleep(3000);
 	}
 	
-	public void enterBreakTimeAndSubmit(int dayNumber) throws InterruptedException
+	private void enterBreakTimeAndSubmit(int dayNumber) throws InterruptedException
 	{
 		String startTime = "12.00";
 		String endTime = "12.30";
