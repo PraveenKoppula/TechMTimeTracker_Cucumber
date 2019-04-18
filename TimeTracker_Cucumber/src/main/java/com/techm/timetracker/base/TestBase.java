@@ -24,14 +24,7 @@ public class TestBase {
 	public TestBase() {
 		try {
 			prop = new Properties();
-//			 FileInputStream ip = new FileInputStream(System.getProperty("user.dir")
-//			 		+ "\\src\\main\\java\\com\\techm\\timetracker\\config\\config.properties");
-
-//			FileInputStream ip = new FileInputStream("/Users/skallu/IdeaProjects/TechMTimeTracker/TechMTimeTrackerAutomation/src/main/java/com/techm/timetracker/config/config.properties");
-
-
-			FileInputStream ip = new FileInputStream("/usr/local/google/home/praveenkumark/My Projects DO NOT DELETE/TechMTimeTracker_Cucumber/TimeTracker_Cucumber/src/main/java/com/techm/timetracker/config/config.properties");
-
+			FileInputStream ip = new FileInputStream("src/main/java/com/techm/timetracker/config/config.properties");
 			prop.load(ip);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -52,7 +45,7 @@ public class TestBase {
 			driver = new ChromeDriver();
 		}
 		else if(browserName.equals("FF")){
-		System.setProperty("webdriver.gecko.driver", "/Users/naveenkhunteta/Documents/SeleniumServer/geckodriver");	
+		System.setProperty("webdriver.gecko.driver", "geckodriver");
 		driver = new FirefoxDriver(); 
 		}
 	
