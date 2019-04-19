@@ -19,12 +19,23 @@ public class TestBase {
 	public static Properties prop;
 	public static WebDriver driver;
 	public  static EventFiringWebDriver e_driver;
-//	public static WebEventListener eventListener;
+	public static WebEventListener eventListener;
 	
 	public TestBase() {
 		try {
 			prop = new Properties();
-			FileInputStream ip = new FileInputStream("src/main/java/com/techm/timetracker/config/config.properties");
+      FileInputStream ip = null;
+
+      if(System.getProperty("os.name").contains("Windows"))
+      {
+        System.out.println("OS is Windows");
+        ip = new FileInputStream(System.getProperty("user.dir")
+            + "\\src\\main\\java\\com\\techm\\timetracker\\config\\config.properties");
+      }else if(System.getProperty("os.name").contains("Linux")) {
+        System.out.println("OS is Linux");
+        ip = new FileInputStream("src/main/java/com/techm/timetracker/config/config.properties");
+      }
+
 			prop.load(ip);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -40,8 +51,13 @@ public class TestBase {
 		
 		if(browserName.equals("chrome"))
 		{
-			System.setProperty("webdriver.chrome.driver", "chromedriver");
-//		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+		  if(System.getProperty("os.name").contains("Linux")) {
+		    System.out.println("OS is Linux");
+        System.setProperty("webdriver.chrome.driver", "chromedriver");
+      }else if(System.getProperty("os.name").contains("Windows")) {
+        System.out.println("OS is Windows");
+        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+      }
 			driver = new ChromeDriver();
 		}
 		else if(browserName.equals("FF")){
@@ -49,11 +65,11 @@ public class TestBase {
 		driver = new FirefoxDriver(); 
 		}
 	
-		// e_driver = new EventFiringWebDriver(driver);
-		// // Now create object of EventListerHandler to register it with EventFiringWebDriver
-		// eventListener = new WebEventListener();
-		// e_driver.register(eventListener);
-		// driver = e_driver;
+		e_driver = new EventFiringWebDriver(driver);
+		// Now create object of EventListerHandler to register it with EventFiringWebDriver
+		eventListener = new WebEventListener();
+		e_driver.register(eventListener);
+		driver = e_driver;
 	
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
